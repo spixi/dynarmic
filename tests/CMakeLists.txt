@@ -3,6 +3,7 @@ set(SRCS
     arm/fuzz_thumb.cpp
     arm/test_arm_disassembler.cpp
     arm/test_thumb_instructions.cpp
+    arm/valid_arm.cpp
     main.cpp
     rand_int.h
     skyeye_interpreter/dyncom/arm_dyncom_dec.cpp
@@ -18,6 +19,7 @@ set(SRCS
     )
 
 set(HEADERS
+    arm/valid_arm.h
     skyeye_interpreter/dyncom/arm_dyncom_dec.h
     skyeye_interpreter/dyncom/arm_dyncom_interpreter.h
     skyeye_interpreter/dyncom/arm_dyncom_run.h
