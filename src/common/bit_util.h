@@ -27,7 +27,7 @@ constexpr size_t BitSize() {
 
 /// Extract bits [begin_bit, end_bit] inclusive from value of type T.
 template<size_t begin_bit, size_t end_bit, typename T>
-constexpr T Bits(const T value) {
+T Bits(const T value) {
     static_assert(begin_bit < end_bit,
                   "invalid bit range (position of beginning bit cannot be greater than that of end bit)");
     static_assert(begin_bit < BitSize<T>(), "begin_bit must be smaller than size of T");
@@ -42,7 +42,7 @@ constexpr T Bits(const T value) {
 #endif
 /// Extracts a single bit at bit_position from value of type T.
 template<size_t bit_position, typename T>
-constexpr bool Bit(const T value) {
+bool Bit(const T value) {
     static_assert(bit_position < BitSize<T>(), "bit_position must be smaller than size of T");
 
     return ((value >> bit_position) & 1) != 0;
@@ -50,11 +50,12 @@ constexpr bool Bit(const T value) {
 
 /// Extracts a single bit at bit_position from value of type T.
 template<typename T>
-constexpr bool Bit(size_t bit_position, const T value) {
+bool Bit(size_t bit_position, const T value) {
     ASSERT_MSG(bit_position < BitSize<T>(), "bit_position must be smaller than size of T");
 
     return ((value >> bit_position) & 1) != 0;
 }
+
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif

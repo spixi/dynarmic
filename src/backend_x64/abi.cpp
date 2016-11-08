@@ -18,7 +18,6 @@
 
 #include "backend_x64/abi.h"
 #include "common/common_types.h"
-#include "common/iterator_util.h"
 
 namespace Dynarmic {
 namespace BackendX64 {
@@ -104,9 +103,9 @@ void ABI_PopRegistersAndAdjustStack(Xbyak::CodeGenerator* code, size_t frame_siz
         code->add(rsp, u32(frame_info.stack_subtraction));
     }
 
-    for (HostLoc gpr : Common::Reverse(regs)) {
-        if (HostLocIsGPR(gpr)) {
-            code->pop(HostLocToReg64(gpr));
+    for (auto gpr = regs.rbegin(); gpr!=regs.rend(); ++gpr) {
+        if (HostLocIsGPR(*gpr)) {
+            code->pop(HostLocToReg64(*gpr));
         }
     }
 }

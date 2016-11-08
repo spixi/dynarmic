@@ -49,7 +49,6 @@ set(HEADERS
     common/bit_util.h
     common/common_types.h
     common/intrusive_list.h
-    common/iterator_util.h
     common/memory_pool.h
     common/mp.h
     common/scope_exit.h
